@@ -1,0 +1,30 @@
+/* Clean layout reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Center hero section */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #35c212;
+}
+
+/* Flexbox grid for projects */
+#projects {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 40px;
+}
+
+.project-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
