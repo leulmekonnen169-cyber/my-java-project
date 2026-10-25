@@ -1,22 +1,29 @@
-# Personal Portfolio Website
+# 👨‍💻 My Developer Portfolio & Projects
 
-Welcome to my personal portfolio repository! This project showcases my web development skills, personal projects, and technical journey.
+Welcome to my repository! This project serves as my personal portfolio website, highlighting my web development projects, skills, and coding practice.
 
 ## 🚀 Live Demo
+Check out the live website hosted on GitHub Pages:
+👉 **[View My Portfolio](https://leulmekonnen169-cyber.github.io/my-java-project/)**
 
-You can view the live site here: 
-👉 [My Live Portfolio](https://leulmekonnen169-cyber.github.io/my-java-project/)
+---
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies & Tools
+* **Languages:** HTML5, CSS3, Java, JavaScript
+* **Database & Tools:** MySQL, Git, GitHub
+* **Web Design:** Responsive layouts, modern styling
 
-* **HTML5** – Structure and semantic layout
-* **CSS3** – Styling and modern layout design
+---
 
-## 📂 Project Structure
+## 📌 Featured Projects
+Here are some of the key files included in this repository:
+* `index.html` – Main portfolio homepage layout.
+* `leul BCI2.pdf` – Documentation / Resume reference.
 
-* `index.html` – Main landing page for the portfolio
-* `prfile.jpg` – Profile picture asset
+---
 
-## 👤 Author
-
+## 📬 Connect with Me
 * **GitHub:** [@leulmekonnen169-cyber](https://github.com/leulmekonnen169-cyber)
+
+---
+*Feel free to explore the code, star ⭐ this repository, or reach out with feedback!*
