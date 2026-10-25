@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Carter | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio website for Alex Carter, a web developer and designer."
+    />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --bg-soft: #121a2b;
+        --card: #1a2438;
+        --primary: #7c9cff;
+        --secondary: #8ef0d2;
+        --text: #edf2ff;
+        --muted: #aab8d6;
+        --accent: #f7b267;
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1100px, 90%);
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(11, 16, 32, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+      }
+
+      .brand {
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .brand span {
+        color: var(--secondary);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 1.4rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        transition: 0.2s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), #a78bfa);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        border-color: var(--border);
+        color: var(--text);
+        background: transparent;
+      }
+
+      .hero {
+        padding: 5rem 0 4rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        color: var(--secondary);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-size: 0.8rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        line-height: 1.05;
+        letter-spacing: -0.06em;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lead {
+        font-size: 1.1rem;
+        color: var(--muted);
+        max-width: 600px;
+        margin: 1.2rem 0 2rem;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .hero-meta strong {
+        color: var(--text);
+      }
+
+      .profile-card {
+        background: linear-gradient(135deg, rgba(124, 156, 255, 0.12), rgba(142, 240, 210, 0.08));
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .profile-card img {
+        width: 100%;
+        height: 520px;
+        object-fit: cover;
+        border-radius: 20px;
+      }
+
+      section {
+        padding: 2rem 0 4rem;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+      }
+
+      .section-heading span {
+        color: var(--muted);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 1.5rem;
+      }
+
+      .about-grid p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .stat {
+        background: rgba(124, 156, 255, 0.06);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 1rem;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.7rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .project-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        overflow: hidden;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(124, 156, 255, 0.5);
+      }
+
+      .project-card .thumb {
+        height: 200px;
+        background: linear-gradient(135deg, #1c2945, #0f172a);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--secondary);
+      }
+
+      .project-content {
+        padding: 1.2rem 1.2rem 1.5rem;
+      }
+
+      .project-content h3 {
+        margin: 0 0 0.5rem;
+      }
+
+      .project-content p {
+        margin: 0 0 1rem;
+        color: var(--muted);
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tags span {
+        background: rgba(124, 156, 255, 0.08);
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+      }
+
+      .skills-wrap {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .skills-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 1.5rem;
+      }
+
+      .skills-card h3 {
+        margin-top: 0;
+      }
+
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .skill-list span {
+        padding: 0.6rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(142, 240, 210, 0.08);
+        border: 1px solid rgba(142, 240, 210, 0.2);
+        color: var(--text);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 1rem 1.2rem;
+      }
+
+      .timeline-year {
+        color: var(--secondary);
+        font-weight: 700;
+      }
+
+      .timeline-item h3 {
+        margin: 0 0 0.3rem;
+      }
+
+      .timeline-item p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .contact {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .contact-card {
+        background: linear-gradient(135deg, rgba(124, 156, 255, 0.08), rgba(247, 178, 103, 0.08));
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 2rem;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 0.85rem;
+        margin-top: 1rem;
+      }
+
+      .contact-item {
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 2rem 0 3rem;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .about-grid,
+        .contact,
+        .projects-grid,
+        .skills-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .section-heading {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="brand">ALEX<span>CARTER</span></div>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact" class="btn btn-secondary">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">Web Developer • Designer • Problem Solver</div>
+            <h1>
+              I build <span class="gradient-text">modern digital experiences</span>
+              that people love.
+            </h1>
+            <p class="lead">
+              I’m Alex, a front-end developer focused on creating clean, user-friendly,
+              and high-converting websites and web apps.
+            </p>
+
+            <div class="cta-row">
+              <a href="#projects" class="btn btn-primary">View My Work</a>
+              <a href="#contact" class="btn btn-secondary">Hire Me</a>
+            </div>
+
+            <div class="hero-meta">
+              <div><strong>5+</strong> Years Experience</div>
+              <div><strong>25+</strong> Projects Delivered</div>
+              <div><strong>Available</strong> for freelance</div>
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <img
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+              alt="Profile portrait"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-heading">
+            <h2>About Me</h2>
+            <span>Passion for design and performance</span>
+          </div>
+
+          <div class="about-grid">
+            <div class="card">
+              <p>
+                I create web experiences that combine aesthetics, usability, and speed.
+                My work focuses on responsive design, smooth interactions, and building
+                products that are easy for users to trust and enjoy.
+              </p>
+
+              <div class="stats">
+                <div class="stat">
+                  <strong>8k+</strong>
+                  <span>Hours coded</span>
+                </div>
+                <div class="stat">
+                  <strong>30+</strong>
+                  <span>Clients</span>
+                </div>
+                <div class="stat">
+                  <strong>99%</strong>
+                  <span>Client satisfaction</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <p>
+                I’ve worked across startups and agencies, helping businesses improve
+                brand presentation, launch new products, and simplify user journeys.
+                I care deeply about writing clean code and making every experience feel
+                intentional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Featured Projects</h2>
+            <span>Selected work and case studies</span>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card">
+              <div class="thumb">S</div>
+              <div class="project-content">
+                <h3>StudioOne Website</h3>
+                <p>
+                  A premium agency website designed to showcase services, attract leads,
+                  and improve engagement.
+                </p>
+                <div class="tags">
+                  <span>HTML</span>
+                  <span>CSS</span>
+                  <span>JavaScript</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="thumb">E</div>
+              <div class="project-content">
+                <h3>E-commerce Shop</h3>
+                <p>
+                  A modern storefront optimized for conversion, performance, and mobile
+                  shopping behavior.
+                </p>
+                <div class="tags">
+                  <span>UI/UX</span>
+                  <span>React</span>
+                  <span>Shopify</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="thumb">A</div>
+              <div class="project-content">
+                <h3>Analytics Dashboard</h3>
+                <p>
+                  An internal business dashboard focused on data clarity, responsiveness,
+                  and fast decision-making.
+                </p>
+                <div class="tags">
+                  <span>Dashboard</span>
+                  <span>API</span>
+                  <span>UX Design</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Skills</h2>
+            <span>Tools and technologies I use</span>
+          </div>
+
+          <div class="skills-wrap">
+            <div class="skills-card">
+              <h3>Frontend</h3>
+              <div class="skill-list">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>React</span>
+                <span>Bootstrap</span>
+                <span>Tailwind</span>
+              </div>
+            </div>
+
+            <div class="skills-card">
+              <h3>Design & Workflow</h3>
+              <div class="skill-list">
+                <span>Figma</span>
+                <span>Photoshop</span>
+                <span>Responsive Design</span>
+                <span>SEO</span>
+                <span>Git</span>
+                <span>Performance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Experience</h2>
+            <span>Career timeline</span>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">2022 - Present</div>
+              <div>
+                <h3>Senior Front-End Developer</h3>
+                <p>
+                  Leading UI implementation for client projects, improving page speed,
+                  and collaborating with designers and marketing teams.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">2019 - 2022</div>
+              <div>
+                <h3>Web Developer</h3>
+                <p>
+                  Built responsive marketing sites, landing pages, and e-commerce
+                  experiences for growing businesses.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">2017 - 2019</div>
+              <div>
+                <h3>UI/UX Designer</h3>
+                <p>
+                  Created digital product interfaces and user-focused experiences with a
+                  strong emphasis on clarity and accessibility.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container contact">
+          <div>
+            <div class="eyebrow">Let’s work together</div>
+            <h2>Need a website that looks great and works even better?</h2>
+            <p class="lead">
+              I’m available for freelance projects, brand work, and product design
+              collaboration.
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Contact</h3>
+            <div class="contact-list">
+              <div class="contact-item">Email: alex@yourportfolio.com</div>
+              <div class="contact-item">Phone: +1 (555) 123-4567</div>
+              <div class="contact-item">Location: New York, USA</div>
+            </div>
+            <div class="cta-row" style="margin-top: 1.5rem;">
+              <a href="mailto:alex@yourportfolio.com" class="btn btn-primary">Send Email</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">© 2026 Alex Carter. All rights reserved.</div>
+    </footer>
+  </body>
+</html>
